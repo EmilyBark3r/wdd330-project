@@ -29,4 +29,29 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function countCartContents(){
+  const cartItems = getLocalStorage("so-cart");
+
+  const totalBar = document.querySelector(".cart-footer");
+
+  if(cartItems.length <= 0){
+    total.style.display = "none";
+    return;
+  } 
+
+  let total = function () {
+    let price = 0;
+    cartItems.forEach(item => {
+      price += item.FinalPrice;
+    });
+    return price;
+  }
+
+  totalBar.innerHTML = `<p>Total: ${total()}</p>`;
+
+  // alert(total());
+  
+}
+
 renderCartContents();
+countCartContents();
