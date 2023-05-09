@@ -1,4 +1,5 @@
 import { findProductById } from "./productData.mjs";
+import { setLocalStorage, getParam } from "./utils.mjs";
 
 export async function productDetails(productId){
     // use findProductById to get the details for the current product. 
@@ -19,14 +20,15 @@ export async function productDetails(productId){
     .addEventListener("click", addToCartHandler);
 }
 
-function addProductToCart(product) {
+async function addProductToCart(productId) {
+    const product = await findProductById(productId);
     setLocalStorage("so-cart", product);
 }
 
 // add to cart button event handler
 async function addToCartHandler(event) {
-    const product = await findProductById(event.target.dataset.id);
-    addProductToCart(product);
+    const productId = getParam('product');
+    addProductToCart(productId);
 }
 
 //this will insert the product specifics into a string of markup.
