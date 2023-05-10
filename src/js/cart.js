@@ -47,10 +47,7 @@ function countCartContents(){
     return price;
   }
 
-  totalBar.innerHTML = `<p>Total: ${total()}</p>`;
-
-  // alert(total());
-  
+  totalBar.innerHTML = `<p>Total: ${total()}</p>`;  
 }
 
 renderCartContents();
