@@ -1,5 +1,8 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage, getParam } from "./utils.mjs";
+import { cartCount } from "./stores.mjs";
+import { setLocalStorage, getLocalStorage, getParam } from "./utils.mjs";
+
+let product = {};
 
 export async function productDetails(productId){
     // use findProductById to get the details for the current product. 
@@ -21,7 +24,9 @@ export async function productDetails(productId){
 }
 
 async function addProductToCart(productId) {
+    let cartContents = getLocalStorage("so-cart");
     const product = await findProductById(productId);
+    // cartCount.set(Number(cartCount) + 1);
     setLocalStorage("so-cart", product);
 }
 
@@ -31,8 +36,16 @@ async function addToCartHandler(event) {
     addProductToCart(productId);
 }
 
-//this will insert the product specifics into a string of markup.
-// export function productDetailsTemplate(product) {
-//     // document.getElementById("productName").innerText = product.Name;
-//     return `${product.Name}`;
-// }f
+// function addToCartHandler() {
+//     let cartContents = getLocalStorage("so-cart");
+//     //check to see if there was anything there
+//     if (!cartContents) {
+//       cartContents = [];
+//     }
+//     // then add the current product to the list
+//     cartContents.push(product);
+//     setLocalStorage("so-cart", cartContents);
+//     // update the visible cartCount
+//     cartCount.set(cartContents.length);
+//   }
+

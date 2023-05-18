@@ -1,3 +1,6 @@
+import MainHeader from "./components/MainHeader.svelte";
+import MainFooter from "./components/MainFooter.svelte";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -40,3 +43,35 @@ export function getParam(param) {
   const product = urlParams.get('product');
   return product;
 }
+
+export function renderHeaderFooter(){
+  // console.log(MainHeader);
+  // <MainHeader></MainHeader>
+  // document.querySelector("#main-header").innerHTML = `<MainHeader></MainHeader>`;
+  // document.querySelector("#main-footer").innerHTML = MainFooter;
+  new MainHeader({
+    target: document.querySelector("#main-header"),
+    // props: {cartCount: 1},
+  });
+
+  new MainFooter({
+    target: document.querySelector('#main-footer'),
+  });
+}
+
+export function getCartCount(){
+  // let cart_list = JSON.parse(localStorage.getItem("so-cart"));
+  // console.log(cart_list.length);
+  if ("so-cart" in localStorage){
+    let cart_list = JSON.parse(localStorage.getItem("so-cart"));
+    console.log(cart_list.length);
+    return cart_list.length;
+  } else {
+    return 0;
+  }
+}
+
+
+
+
+getCartCount();

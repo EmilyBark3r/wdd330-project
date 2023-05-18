@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import { renderHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -34,7 +35,7 @@ function countCartContents(){
 
   const totalBar = document.querySelector(".cart-footer");
 
-  if(cartItems.length <= 0){
+  if("so-cart" in localStorage){
     total.style.display = "none";
     return;
   } 
@@ -51,4 +52,5 @@ function countCartContents(){
 }
 
 renderCartContents();
-countCartContents();
+// countCartContents();
+renderHeaderFooter();
