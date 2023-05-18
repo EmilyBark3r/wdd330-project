@@ -20,6 +20,7 @@ export async function productDetails(productId){
     .addEventListener("click", addToCartHandler);
 }
 
+// add product to cart
 async function addProductToCart(productId) {
     const product = await findProductById(productId);
     setLocalStorage("so-cart", product);
@@ -31,8 +32,3 @@ async function addToCartHandler(event) {
     addProductToCart(productId);
 }
 
-//this will insert the product specifics into a string of markup.
-// export function productDetailsTemplate(product) {
-//     // document.getElementById("productName").innerText = product.Name;
-//     return `${product.Name}`;
-// }f

@@ -1,3 +1,5 @@
+import { element } from "svelte/internal";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -24,6 +26,22 @@ export function setLocalStorage(key, data) {
 
   localStorage.setItem(key, JSON.stringify(elements));
 }
+// delete data from local storage
+export function removeLocalStorage(key,data) {
+  elements;
+  const inStorage = getLocalStorage(key);
+
+  if(inStorage) {
+    inStorage.map((item) => {
+      elements.removeItem(item);
+    })
+  }
+
+  elements.removeItem(data);
+
+  localStorage.setItem(key, JSON.stringify(elements));
+}
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
