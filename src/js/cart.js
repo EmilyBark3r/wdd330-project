@@ -1,5 +1,5 @@
-import { element } from "svelte/internal";
-import { getLocalStorage, removeLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from "./utils.mjs";
+import { renderHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -9,13 +9,6 @@ function renderCartContents() {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
-}
-
-// REMOVE FROM CART
-async function RemoveItem(){
-
-  // localStorage.removeItem("productId");
-  // console.log("this is working");
 }
 
 function cartItemTemplate(item) {
@@ -32,27 +25,21 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-  <button id="remove" data-id="">X</button>
-  </li>`;
-  
- //   <input type="button" value="Remove From Cart" onClick="RemoveItem()"> 
-// button is for the x to remove items from the cart
+</li>`;
+
   return newItem;
 }
 
-
-//cart contents
 function countCartContents(){
   const cartItems = getLocalStorage("so-cart");
 
   const totalBar = document.querySelector(".cart-footer");
 
-//check if theres something in the cart already, if not set total to 0
-  if(cartItems.length <= 0){
+  if("so-cart" in localStorage){
     total.style.display = "none";
     return;
   } 
-//total price in cart
+
   let total = function () {
     let price = 0;
     cartItems.forEach(item => {
@@ -65,4 +52,5 @@ function countCartContents(){
 }
 
 renderCartContents();
-countCartContents();
+// countCartContents();
+renderHeaderFooter();
