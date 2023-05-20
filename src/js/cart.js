@@ -32,7 +32,6 @@ function cartItemTemplate(item) {
 
 function countCartContents(){
   const cartItems = getLocalStorage("so-cart");
-
   const totalBar = document.querySelector(".cart-footer");
 
   if("so-cart" in localStorage){
