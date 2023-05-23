@@ -10,6 +10,7 @@ function renderCartContents() {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
+  //remove from cart
   const buttonX = document.querySelectorAll(".clearItem")
     buttonX.forEach( function(item) {
       item.addEventListener("click", removeFromCartHandler);
@@ -38,29 +39,13 @@ function cartItemTemplate(item) {
 }
 
 //delete button.
-
-// // Add an eventlistener to each X button. 
-// // When the X is clicked you need to pull the id of the item to be removed
-// document.querySelector('clearItem').addEventListener('click', () => {
-// // pull the contents of the cart from local storage (get/id or post/id)
-// const cartItems = getLocalStorage("so-cart");
-// // remove the appropriate item
-// })
-
-// remove the appropriate item
-// restore the cart in localStorage
-// re-render the cart list
-
-//Doesnt work, products no longer will show up in the cart. Cant read null.
-
-
   async function removeProductFromCart(productId) {
       const products = getLocalStorage("so-cart");
       const newProducts = products.filter((item) => item.Id != productId); 
       localStorage.setItem("so-cart", JSON.stringify(newProducts)); 
     }
   
-  // add to cart button event handler
+  // remove from cart handler
   async function removeFromCartHandler(event) {
       const productId = event.target.dataset.id;
       removeProductFromCart(productId);
