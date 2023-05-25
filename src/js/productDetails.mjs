@@ -12,7 +12,7 @@ export async function productDetails(productId){
     // once we have the product details we can render out the HTML
     document.getElementById("productName").innerHTML = product.Brand.Name;
     document.getElementById("productNameWithoutBrand").innerHTML = product.NameWithoutBrand;
-    document.getElementById("productImage").src = product.Image;
+    document.getElementById("productImage").src = product.Images.PrimaryLarge;
     document.getElementById("productFinalPrice").innerHTML = product.FinalPrice;
     document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
     document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
