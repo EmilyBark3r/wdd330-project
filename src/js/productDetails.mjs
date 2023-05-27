@@ -7,7 +7,7 @@ let product = {};
 export async function productDetails(productId){
     // use findProductById to get the details for the current product. 
     // findProductById will return a promise! use await or .then() to process it
-    const product = await findProductById(productId);
+    product = await findProductById(productId);
     
     // once we have the product details we can render out the HTML
     document.getElementById("productName").innerHTML = product.Brand.Name;
@@ -23,29 +23,16 @@ export async function productDetails(productId){
     .addEventListener("click", addToCartHandler);
 }
 
-async function addProductToCart(productId) {
+function addToCartHandler() {
     let cartContents = getLocalStorage("so-cart");
-    const product = await findProductById(productId);
-    // cartCount.set(Number(cartCount) + 1);
-    setLocalStorage("so-cart", product);
-}
-
-// add to cart button event handler
-async function addToCartHandler(event) {
-    const productId = getParam('product');
-    addProductToCart(productId);
-}
-
-// function addToCartHandler() {
-//     let cartContents = getLocalStorage("so-cart");
-//     //check to see if there was anything there
-//     if (!cartContents) {
-//       cartContents = [];
-//     }
-//     // then add the current product to the list
-//     cartContents.push(product);
-//     setLocalStorage("so-cart", cartContents);
-//     // update the visible cartCount
-//     cartCount.set(cartContents.length);
-//   }
+    //check to see if there was anything there
+    if (!cartContents) {
+      cartContents = [];
+    }
+    // then add the current product to the list
+    cartContents.push(product);
+    setLocalStorage("so-cart", cartContents);
+    // update the visible cartCount
+    cartCount.set(cartContents.length);
+  }
 
