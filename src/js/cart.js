@@ -50,6 +50,7 @@ function cartItemTemplate(item) {
       const productId = event.target.dataset.id;
       removeProductFromCart(productId);
       renderCartContents();
+      countCartContents();
   }
 
   //cart total
@@ -57,10 +58,10 @@ function countCartContents(){
   const cartItems = getLocalStorage("so-cart");
   const totalBar = document.querySelector(".cart-footer");
 
-  if("so-cart" in localStorage){
-    total.style.display = "none";
-    return;
-  } 
+  // if("so-cart" in localStorage){
+  //   total.style.display = "none";
+  //   return;
+  // } 
 
   let total = function () {
     let price = 0;
@@ -70,9 +71,10 @@ function countCartContents(){
     return price;
   }
 
-  totalBar.innerHTML = `<p>Total: ${total()}</p>`;  
+  totalBar.innerHTML = `<p>Total: ${Math.round(total() * 100) /100}</p>`; 
+  renderCartContents(); 
 }
 
 renderCartContents();
-// countCartContents();
+countCartContents();
 renderHeaderFooter();
