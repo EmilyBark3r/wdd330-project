@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { renderHeaderFooter } from "./utils.mjs";
-// import { findProductById } from "./productData.mjs";
 import ShoppingCart from "./components/ShoppingCart.svelte";
+import { cartCount } from "./stores.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -43,6 +43,7 @@ function cartItemTemplate(item) {
       const products = getLocalStorage("so-cart");
       const newProducts = products.filter((item) => item.Id != productId); 
       localStorage.setItem("so-cart", JSON.stringify(newProducts)); 
+      cartCount.set(products.length - 1);
     }
   
   // remove from cart handler
@@ -72,7 +73,7 @@ function countCartContents(){
   }
 
   totalBar.innerHTML = `<p>Total: ${Math.round(total() * 100) /100}</p>`; 
-  renderCartContents(); 
+  renderCartContents();
 }
 
 renderCartContents();
