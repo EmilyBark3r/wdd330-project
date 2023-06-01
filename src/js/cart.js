@@ -1,6 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { renderHeaderFooter } from "./utils.mjs";
-import { findProductById } from "./productData.mjs";
+// import { findProductById } from "./productData.mjs";
+import ShoppingCart from "./components/ShoppingCart.svelte";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -15,7 +16,6 @@ function renderCartContents() {
     buttonX.forEach( function(item) {
       item.addEventListener("click", removeFromCartHandler);
     })
-  
 }
 
 function cartItemTemplate(item) {
