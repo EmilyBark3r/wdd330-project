@@ -1,3 +1,6 @@
+import MainHeader from "./components/MainHeader.svelte";
+import MainFooter from "./components/MainFooter.svelte";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -11,18 +14,7 @@ export function getLocalStorage(key) {
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
-  const elements = [];
-  const inStorage = getLocalStorage(key);
-
-  if(inStorage){
-    inStorage.map((item) =>{
-      elements.push(item);
-    })
-  }
-  
-  elements.push(data);
-
-  localStorage.setItem(key, JSON.stringify(elements));
+  localStorage.setItem(key, JSON.stringify(data));
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -37,6 +29,21 @@ export function setClick(selector, callback) {
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get('product');
+  const product = urlParams.get(param);
   return product;
+}
+
+export function getCartCount(){
+  const count = getLocalStorage("so-cart")?.length ?? 0;
+  return count;
+}
+
+export function renderHeaderFooter(){
+  new MainHeader({
+    target: document.querySelector("#main-header"),
+    props: {cartCount: getCartCount()},
+  });
+  new MainFooter({
+    target: document.querySelector('#main-footer'),
+  });
 }
