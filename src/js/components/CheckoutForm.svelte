@@ -123,10 +123,10 @@ init();
           <label for="orderTotal"><b>Order Total</b></label>
           <p id="orderTotal">${orderTotal}</p>
         </li>
+        <button id="checkoutSubmit" type="submit">Checkout</button>
       </ul>
     </fieldset>
   
-    <button id="checkoutSubmit" type="submit">Checkout</button>
   </form>
 
   <style>
