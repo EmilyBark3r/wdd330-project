@@ -1,5 +1,5 @@
-//from activty 5
-const baseURL = import.meta.env.VITE_SERVER_URL
+//from activity 5
+const baseURL = import.meta.env.VITE_SERVER_URL;
 
 function convertToJson(res) {
   if (res.ok) {
