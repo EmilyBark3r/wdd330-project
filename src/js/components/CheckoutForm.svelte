@@ -154,4 +154,7 @@ init();
       justify-content: space-between;
       align-items: center;
     }
+    .checkout-summary {
+        margin-bottom: 10px;
+    }
   </style>
