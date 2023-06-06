@@ -37,6 +37,7 @@
   </div>
 
   <style>
+    /* cartCount style for the background subscript color */
     #count {
       background-color: peachpuff;
       color: black;
