@@ -43,9 +43,8 @@
       color: black;
       border-radius: 30px;
       padding: 4px;
-      margin-bottom: 15px;
       position: absolute;
-      bottom: 15px;
+      bottom: 25px;
       left: 15px;
       font-size: 18px;
     }
