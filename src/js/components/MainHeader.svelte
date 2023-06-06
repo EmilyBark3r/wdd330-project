@@ -32,6 +32,20 @@
         <!-- <text x="0" y="115" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Natalia Woodroffe</text>
         <text x="0" y="120" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text> -->
       </svg>
-      <sup>{$cartCount > 0 ? $cartCount : ""}</sup>
+      <sup id="count">{$cartCount > 0 ? $cartCount : ""}</sup>
     </a>
   </div>
+
+  <style>
+    #count {
+      background-color: peachpuff;
+      color: black;
+      border-radius: 30px;
+      padding: 4px;
+      margin-bottom: 15px;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-size: 18px;
+    }
+  </style>
