@@ -1,5 +1,6 @@
 import MainHeader from "./components/MainHeader.svelte";
 import MainFooter from "./components/MainFooter.svelte";
+import AlertMessage from "./components/AlertMessage.svelte";
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -58,7 +59,7 @@ export function renderHeaderFooter(){
     target: document.querySelector('#main-footer'),
   });
 }
-
+// Cart Count Code
 export function getCartCount(){
   // let cart_list = JSON.parse(localStorage.getItem("so-cart"));
   // console.log(cart_list.length);
@@ -71,7 +72,39 @@ export function getCartCount(){
   }
 }
 
+//activity 6
+// takes a form element and returns an object where the key is the "name" of the form input.
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
 
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
 
+  return convertedJSON;
+}
 
+//Team Activity 7 - handling the unhappy path
+export function alertMessage(message, scroll = true, duration = 3000) {
+const alert = new AlertMessage({
+    target: document.querySelector("body"),
+    anchor: document.querySelector("main"),
+    props: {
+      message,
+    },
+});
+if (scroll) window.scrollTo(0, 0);
+  
+// left this here to show how you could remove the alert automatically after a certain amount of time.
+// setTimeout(function () {
+//   alert.$destroy();
+// }, duration);
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => alert.remove());
+}
+  
 getCartCount();
