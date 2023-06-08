@@ -58,7 +58,7 @@ export function renderHeaderFooter(){
     target: document.querySelector('#main-footer'),
   });
 }
-
+// Cart Count Code
 export function getCartCount(){
   // let cart_list = JSON.parse(localStorage.getItem("so-cart"));
   // console.log(cart_list.length);

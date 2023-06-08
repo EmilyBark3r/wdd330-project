@@ -4,7 +4,7 @@
 </script>
 
 <div class="logo">
-    <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+    <img src="\images\noun_Tent_2517.svg" alt="tent image for logo"/>
     <a href="/index.html"> Sleep<span class="highlight">Outside</span></a>
   </div>
   <div class="cart">
@@ -39,7 +39,7 @@
   <style>
     /* cartCount style for the background subscript color */
     #count {
-      background-color: peachpuff;
+      background-color: rgb(252, 177, 111);
       color: black;
       border-radius: 30px;
       padding: 4px;
