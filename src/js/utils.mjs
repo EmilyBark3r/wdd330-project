@@ -1,5 +1,6 @@
 import MainHeader from "./components/MainHeader.svelte";
 import MainFooter from "./components/MainFooter.svelte";
+import AlertMessage from "./components/AlertMessage.svelte";
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -84,6 +85,26 @@ export function formDataToJSON(formElement) {
   return convertedJSON;
 }
 
+//Team Activity 7 - handling the unhappy path
+export function alertMessage(message, scroll = true, duration = 3000) {
+const alert = new AlertMessage({
+    target: document.querySelector("body"),
+    anchor: document.querySelector("main"),
+    props: {
+      message,
+    },
+});
+if (scroll) window.scrollTo(0, 0);
+  
+// left this here to show how you could remove the alert automatically after a certain amount of time.
+// setTimeout(function () {
+//   alert.$destroy();
+// }, duration);
+}
 
-
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => alert.remove());
+}
+  
 getCartCount();

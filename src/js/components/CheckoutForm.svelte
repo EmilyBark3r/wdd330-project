@@ -1,6 +1,6 @@
 <script>
-    import { getLocalStorage } from "../utils.mjs";
-    import { checkout } from "../externalServices.mjs";
+   import { getLocalStorage, setLocalStorage, formDataToJSON, alertMessage, removeAllAlerts} from "../utils.mjs";
+  import { checkout } from "../externalServices.mjs";
 // props
 export let key = "";
 
@@ -50,7 +50,7 @@ const packageItems = function (items) {
   };
 
   const handleSubmit = async function (e) {
-    const json =  formDataToJSON(this);
+    const json = formDataToJSON(this);
     // add totals, and item details
     json.orderDate = new Date();
     json.orderTotal = orderTotal;
@@ -61,7 +61,14 @@ const packageItems = function (items) {
     try {
       const res = await checkout(json);
       console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
     } catch (err) {
+      // get rid of any preexisting alerts.
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+
       console.log(err);
     }
   };
@@ -69,6 +76,7 @@ const packageItems = function (items) {
 // initial setup
 init(); 
 </script>
+<!-- FORM -->
 <form name="checkout" on:submit|preventDefault={handleSubmit}>
     <fieldset>
       <legend>Shipping</legend>
