@@ -27,7 +27,13 @@ export async function productDetails(productId){
 async function addProductToCart(productId) {
     let cartContents = getLocalStorage("so-cart");
     const product = await findProductById(productId);
-    cartCount.set(cartContents.length + 1);
+
+    if (!cartContents){
+        cartCount.set(1)
+    }
+    else {
+        cartCount.set(cartContents.length + 1);
+    }
     setLocalStorage("so-cart", product);
 }
 
