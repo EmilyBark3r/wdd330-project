@@ -14,7 +14,8 @@ document.getElementById("loginButton").addEventListener("click", (e) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const creds = [username, password];
+    const creds = {username, password};
+    const redirect = getRedirectParam();
 
-    login(creds);
+    login(creds, redirect);
 })

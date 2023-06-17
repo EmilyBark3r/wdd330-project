@@ -3,6 +3,7 @@ import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
 import jwt_decode from "jwt-decode";
 
 const tokenKey = "so-token";
+
 export async function login(creds, redirect = "/") {
     try {
         const token = await loginRequest(creds);
@@ -36,7 +37,7 @@ export function checkLogin() {
   }
 
 //Code from the activity
-export function isTokenValid(token) {
+function isTokenValid(token) {
     // check to make sure a token was actually passed in.
     if (token) {
         // decode the token
