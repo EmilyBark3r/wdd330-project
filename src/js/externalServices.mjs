@@ -35,3 +35,18 @@ export async function checkout(payload) {
   };
   return await fetch(baseURL + "checkout/", options).then(convertToJson);
 }
+
+export async function loginRequest(creds){
+  const email = creds[0];
+  const password = creds[1];
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: "user1@email.com" , password: "user1" }),
+  };
+  return await fetch("http://server-nodejs.cit.byui.edu:3000/login", options).then(convertToJson);
+}
