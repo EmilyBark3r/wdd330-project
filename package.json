@@ -35,5 +35,8 @@
     "last 3 ios_saf versions",
     "last 3 safari versions"
   ],
-  "type" : "module"
+  "type": "module",
+  "dependencies": {
+    "jwt-decode": "^3.1.2"
+  }
 }
